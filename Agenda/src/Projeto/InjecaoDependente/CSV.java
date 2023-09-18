@@ -9,7 +9,6 @@ public class CSV implements Salvar {
     public void salva(Agenda agenda) {
         StringBuilder builder = new StringBuilder();
 
-        // Combine the values from the Agenda object into a CSV formatted string
         builder.append(escapeSpecialCharacters(agenda.getNome()))
                 .append(",")
                 .append(escapeSpecialCharacters(agenda.getTelefone()))
