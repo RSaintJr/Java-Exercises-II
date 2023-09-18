@@ -30,6 +30,7 @@ public class CSV implements Salvar {
         } finally {
             if (writer != null) {
                 try {
+                    System.out.println("Arquivo CSV salvo com sucesso.");
                     writer.close();
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -21,6 +21,7 @@ public class JSON implements Salvar{
         } finally {
             if (writer != null) {
                 try {
+                    System.out.println("Arquivo JSON salvo com sucesso.");
                     writer.close();
                 } catch (IOException e) {
                     e.printStackTrace();

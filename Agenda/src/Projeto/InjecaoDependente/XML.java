@@ -50,6 +50,7 @@ public class XML implements Salvar{
 			DOMSource source = new DOMSource(doc);
 			StreamResult result = new StreamResult(new FileOutputStream("agenda.xml"));
 			transformer.transform(source, result);
+			System.out.println("Arquivo XML salvo com sucesso.");
 		} catch (ParserConfigurationException | TransformerException | IOException e) {
 			throw new RuntimeException(e);
 		}
