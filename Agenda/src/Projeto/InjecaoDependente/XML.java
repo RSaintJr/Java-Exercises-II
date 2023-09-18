@@ -22,12 +22,10 @@ public class XML implements Salvar{
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
-			// Create the root element
 			Document doc = docBuilder.newDocument();
 			Element rootElement = doc.createElement("Agenda");
 			doc.appendChild(rootElement);
 
-			// Create child elements and set their values
 			Element nomeElement = doc.createElement("Nome");
 			nomeElement.appendChild(doc.createTextNode(agenda.getNome()));
 			rootElement.appendChild(nomeElement);
@@ -44,7 +42,6 @@ public class XML implements Salvar{
 			emailElement.appendChild(doc.createTextNode(agenda.getEmail()));
 			rootElement.appendChild(emailElement);
 
-			// Write the XML content to a file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
