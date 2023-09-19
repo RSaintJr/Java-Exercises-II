@@ -13,9 +13,13 @@ public class ClienteSocket {
     private Scanner entrada;
 
     public ClienteSocket(String host, int port) throws IOException {
-        cliente = new Socket(host, port);
-        saida = new PrintStream(cliente.getOutputStream());
-        entrada = new Scanner(System.in);
+        try {
+            cliente = new Socket(host, port);
+            saida = new PrintStream(cliente.getOutputStream());
+            entrada = new Scanner(System.in);
+        } catch (IOException e) {
+            System.err.println("Erro ao criar o socket: " + e.getMessage());
+        }
     }
 
     public void startClient() {
@@ -27,7 +31,7 @@ public class ClienteSocket {
                     System.out.println(mensagem);
                 }
             } catch (IOException e) {
-                System.out.println("Algo errado aconteceu");
+                System.err.println("Erro ao ler dados do servidor: " + e.getMessage());
             }
         }).start();
 
@@ -38,9 +42,9 @@ public class ClienteSocket {
         } while (!"sair".equals(texto));
         try {
             cliente.close();
-            System.out.println("Usuario saiu");
+            System.out.println("Usuário saiu");
         } catch (IOException e) {
-            System.out.println();
+            System.err.println("Erro ao encerrar o cliente: " + e.getMessage());
         }
     }
 
@@ -49,7 +53,8 @@ public class ClienteSocket {
             ClienteSocket cliente = new ClienteSocket("0.0.0.0", 7000);
             cliente.startClient();
         } catch (IOException e) {
-            System.out.println("Algo errado aconteceu");
+            System.err.println("Erro ao iniciar o cliente: " + e.getMessage());
         }
     }
 }
+
