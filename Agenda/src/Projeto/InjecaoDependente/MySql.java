@@ -29,7 +29,7 @@ public class MySql implements Salvar {
             System.out.println("Erro ao inserir registro: " + e.getMessage());
         } finally {
             try {
-                System.out.println("Arquivo XML salvo com sucesso.");
+                System.out.println("Dados salvos com sucesso.");
                 conexao.close();
             } catch (SQLException e) {
                 System.out.println("Erro ao fechar conexão: " + e.getMessage());
